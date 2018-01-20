@@ -9,14 +9,14 @@ using namespace std;
 
 int main()
 {
+   int mouseWeight;
+   int dieterWeight;
    int amountSweetner; 
    cout << "What is the amount of artificial sweetner needed to kill a mouse?" << endl;
    cin >> amountSweetner;
    cout << "What is the weight of the mouse?" << endl;
-   int mouseWeight;
    cin >> mouseWeight;
    cout << "What is the weight of the dieter?" << endl;
-   int dieterWeight;
    cin >> dieterWeight;
    return 0;
       
