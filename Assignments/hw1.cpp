@@ -18,8 +18,8 @@ int main()
    cin >> mouseWeight;
    cout << "What is the desired  weight of the dieter?" << endl;
    cin >> dieterWeight;
-   double testVar = (amountSweetner / percentageSweetner) * mouseWeight;
-   double dieterDeath = testVar * dieterWeight;
+   double ratDeath = (amountSweetner / percentageSweetner) * mouseWeight;
+   double dieterDeath = ratDeath * dieterWeight;
    cout << "You can drink " << dieterDeath << " sodas without dying as a result" << endl; 
    return 0;
       
