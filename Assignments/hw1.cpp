@@ -9,6 +9,7 @@ using namespace std;
 
 int main()
 {
+   const long percentageSweetner = .1;
    int mouseWeight;
    int dieterWeight;
    int amountSweetner; 
