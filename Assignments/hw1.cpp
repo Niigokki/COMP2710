@@ -3,6 +3,7 @@
 //just a simple program that takes input, and performs a few simple calculations
 //hw1.cpp
 //just use gcc/g++
+//g++ -o hw1 hw1.cpp
 #include <iostream>
 using namespace std;
 
