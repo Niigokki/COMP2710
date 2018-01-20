@@ -10,14 +10,12 @@ using namespace std;
 int main()
 {
    const long percentageSweetner = .1;
-   int mouseWeight;
-   int dieterWeight;
-   int amountSweetner; 
+   int mouseWeight, dieterWeight, amountSweetner;
    cout << "What is the amount of artificial sweetner needed to kill a mouse?" << endl;
    cin >> amountSweetner;
    cout << "What is the weight of the mouse?" << endl;
    cin >> mouseWeight;
-   cout << "What is the weight of the dieter?" << endl;
+   cout << "What is the desired  weight of the dieter?" << endl;
    cin >> dieterWeight;
    return 0;
       
