@@ -10,24 +10,23 @@ using namespace std;
 
 int main() {
 
-double loanAmount, interestRate, numPayments;
+double amount_loan, interest_rate, monthly_payments;
 //the magic formula for formatting
 cout.setf(ios::fixed);
 	cout.setf(ios::showpoint);
 	cout.precision(2);
 	
 	cout << "Loan Amount: ";
-	cin >> loanAmount;
+	cin >> amount_loan;
 	cout << "Interest Rate (% per year): ";
-	cin >> interestRate;
+	cin >> interest_rate;
 	cout << "Monthly Payments: ";
-	cin >> numPayments;
-
+	cin >> monthly_payments;
 
 
 	cout << "*********************************************************************";
 	cout << "\n\tAmortization Table";
-		cout << "\n*********************************************************************";
+	cout << "\n*********************************************************************";
 
 
 
