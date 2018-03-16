@@ -54,6 +54,7 @@ void initList(TriviaList &someList) {
 	someList.count += 3;
 }
 //create a question based on user input and add it to the prexisting list
+//using getline to clear input
 void addQuestion(TriviaList &someList) {
 	TriviaNode *newNode = new TriviaNode;
 	cout << "Enter a question: ";
@@ -67,6 +68,37 @@ void addQuestion(TriviaList &someList) {
 
 }
 
+int askQuestion(TriviaList trivia, int i) {
+	TriviaNode *currentNode = trivia.first;
+
+	if (i == 0) {
+	 cout << "\nWarning - The number of trivia to be asked must equal to or be larger than 1.";
+	 return 0;
+	}
+	if (i > trivia.count) {
+		cout << "\n Warning - There are only " << trivia.count << " trivia questions in the list";
+		i = trivia.count;
+	}
+	string player_answer;
+	int points = 0;
+	for (int z = 0; z < i; z++) {
+		cout << "\nQuestion: " << currentNode -> question << "\nAnswer";
+		getline(cin,player_answer);
+		if (currentNode -> answer == player_answer) {
+			cout << "Correct! You recieve " << currentNode -> point_value << " points.";
+		       points += currentNode -> point_value;	
+		}
+		else {
+		cout << "Sorry, but your answer is incorrect.  The correct answer is : " << currentNode -> answer;
+		}
+		cout << "\nYour Point Total Is: " << points << endl;
+		currentNode = currentNode -> next;
+	}
+	return 0;
+
+
+}
+//production code only right now
 int main() {
 	cout << "*** Welcome to Jacob's trivia quiz game ***" << endl;
 	TriviaList game;
@@ -80,12 +112,19 @@ int main() {
 	//we have to flush the input here or the new line gets taken to the add question, skipping
 	//the part where we actually set our question
 	cin.ignore();
-	if (input == "No") {
+	if (input == "No" || input == "no" || input == "N" || input == "n") {
 	addQuestions = false;
 	}
 
 	}
 	while (addQuestions);
+	
+	askQuestion(game, game.count);
+	cout << "\n..." << endl;
+
+	cout <<"\n*** Thank you for playing the trivia quiz game.  Goodbye! ***" << endl;
+
+	
 
 return 0;
 }
