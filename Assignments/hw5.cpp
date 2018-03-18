@@ -11,7 +11,7 @@
 #include <string>
 
 using namespace std;
-
+#define UNIT_TESTING
 //our data structure
 struct TriviaNode{
 	string question;
@@ -57,6 +57,14 @@ void initList(TriviaList &someList) {
 //using getline to clear input
 void addQuestion(TriviaList &someList) {
 	TriviaNode *newNode = new TriviaNode;
+	TriviaNode *endNode = someList.first;
+while (endNode != NULL && endNode->next != NULL)
+	{
+		endNode = endNode->next;
+}
+	if (newNode == NULL) {
+	exit(1);
+	}
 	cout << "Enter a question: ";
         getline(cin, newNode -> question);
 	cout << "Enter an answer: ";
@@ -64,7 +72,13 @@ void addQuestion(TriviaList &someList) {
 	cout << "Enter award points: ";
 	cin >> newNode -> point_value;
 	cin.get();
-	someList.current = newNode;	
+	if (endNode == NULL) {
+		someList.first = newNode;
+	}
+	else {
+		endNode -> next = newNode;
+	}
+	someList.count++;
 
 }
 
@@ -82,7 +96,7 @@ int askQuestion(TriviaList trivia, int i) {
 	string player_answer;
 	int points = 0;
 	for (int z = 0; z < i; z++) {
-		cout << "\nQuestion: " << currentNode -> question << "\nAnswer";
+		cout << "\nQuestion: " << currentNode -> question << "\nAnswer: ";
 		getline(cin,player_answer);
 		if (currentNode -> answer == player_answer) {
 			cout << "Correct! You recieve " << currentNode -> point_value << " points.";
@@ -96,10 +110,10 @@ int askQuestion(TriviaList trivia, int i) {
 	}
 	return 0;
 
-
 }
 //production code only right now
 int main() {
+
 	cout << "*** Welcome to Jacob's trivia quiz game ***" << endl;
 	TriviaList game;
 	string input;
@@ -123,7 +137,6 @@ int main() {
 	cout << "\n..." << endl;
 
 	cout <<"\n*** Thank you for playing the trivia quiz game.  Goodbye! ***" << endl;
-
 	
 
 return 0;
