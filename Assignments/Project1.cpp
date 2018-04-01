@@ -22,7 +22,7 @@ struct Player{
 };
 
 Player* player;
-
+string scoreArray[10];
 bool init_player() {
 	player = new Player();
 	player-> overall_score = 0;
@@ -36,10 +36,18 @@ bool init_player() {
 int load_scores() {
 	ifstream file("scores.dat");
 	if (file.is_open()) {
-		string scoreArray[10];
 		for (int i = 0; i < 11; ++i) {
 			file >> scoreArray[i];
 		}
+	}
+}
+
+int save_scores() {
+	ofstream outfile("scores.dat");
+	if (outfile.is_open()) {
+	for (int i = 0; i < 11; ++i) {
+		outfile << scoreArray[i];
+	}
 	}
 }
 
