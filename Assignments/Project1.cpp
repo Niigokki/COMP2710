@@ -61,7 +61,7 @@ int save_scores() {
 	}
 	}
 }
-int chooseEncounter(){
+int choose_encounter(){
 	int encounter_chance = rand() % 120 + 1;
 	player-> time--;
 	cout <<"\n Moving forward....";
@@ -95,10 +95,34 @@ int chooseEncounter(){
 	return 0;
 	
 }
+int main_menu() {
+	char choice;
+	cout <<"\nWelcome to Shelby Center and Dragons!";
+	cout <<"\n\n1) Start a new game of Shelby Center and Dragons!";
+	cout <<"\n2) View the High Score Table!";
+	cout <<"\n3) Exit to terminal";
+	cout <<"\n\nPlease enter one of these numbers to continue. ";
+	cin >> choice;
+	if (choice == '1') {
+	//TODO init game
+	init_player();
+	}
+	if (choice == ('2') ) {
+	//TODO display scores
+	load_scores();
+	}
+	if (choice == ('3')) {
+	return 0;
+	}
+	else {
+	cout << "\nPlease enter a valid option to continue";
+	main_menu();
+	}
+}
 
 //dummy code for now
 int main() {
-	init_player();
+	main_menu();
 	return 0;
 }
 
