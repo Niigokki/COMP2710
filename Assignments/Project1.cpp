@@ -1,8 +1,7 @@
 /*
-  * Jacob Smith
+  * Jacob "Morgan" Smith
   * jks0039
   * Project1.cpp
-  * as always, method stubs taken from PDF.
   * Compiled using g++
   * g++ -o Project1 Project1.cpp
   */
@@ -13,6 +12,12 @@
 #include <cstdlib>
 
 using namespace std;
+
+void player_phase_menu();
+void search_for_change();
+void read_papers();
+void view_player();
+void player_switch();
 
 struct Player{
 	int overall_score;
@@ -27,6 +32,7 @@ struct Player{
 Player* player;
 string scoreArray[10];
 string nameArray[10];
+
 bool init_player() {
 	player = new Player();
 	player-> overall_score = 0;
@@ -35,6 +41,7 @@ bool init_player() {
 	player-> money = 8;
 	player-> steps_remaining = 20;
 	player-> is_alive = true;
+	player-> name = "Morgan";
 	cout << "Please input your character's name! ";
 	cin >> player -> name;
 }
@@ -62,17 +69,17 @@ int save_scores() {
 	}
 }
 
-int choose_encounter(){
+void choose_encounter(){
 	int encounter_chance = rand() % 120 + 1;
 	player-> time--;
-	cout <<"\n Moving forward....";
+	cout <<"\nMoving forward and using some of your precious time, you find that...";
 	if (encounter_chance < 11) {
- 		cout << "\nClass is canceled for the day! Enjoy your free time!";
-		player-> time + 2;
+ 		cout << "\nClass is canceled for the day! Enjoy your free time!" << endl;
+		player-> time + 3;
 		player -> steps_remaining--;
 	}
 	else if (encounter_chance <=50 && encounter_chance >= 11) {
-		cout << "\nYou encounter a Puzzle!";
+		cout << "\nYou encounter a Puzzle!" << endl;
 		//TODO add call to puzzle generation method
 		player -> steps_remaining--;	
 	}
@@ -84,38 +91,78 @@ int choose_encounter(){
 		cout << player -> steps_remaining << " steps remain" << endl;
 	}
 	else if (encounter_chance <=100 && encounter_chance >= 75) {
-		cout << "\nIt's time to grade some papers for COMP 2210! Losing time has never been so monontous";
+		cout << "\nIt's time to grade some papers for COMP 2210! Losing time has never been so monontous" << endl;
 		player -> time--;
 		player -> money++;
 		player -> steps_remaining--;
 	}
 	else if (encounter_chance <=120 && encounter_chance >= 100) {
-		cout << "\nAttacked by the dreaded busy work assignment, you're left with not only less time, but also less insight.";
+		cout << "\nAttacked by the dreaded busy work assignment, you're left with not only less time, but also less insight." << endl;
 		player -> intellegence--;
 		player -> steps_remaining--;
 	}
-
-	return 0;
+	player_phase_menu();
 	
 }
-int read_paper() {
+void read_paper() {
 	player -> time--;
 	cout << "You decided to read some technical papers that Dr. Kuu gave you... You already feel enlightened!"<< endl;
 	player -> intellegence++;
 	cout << "You now have "<< player -> intellegence << " insight" << endl;
+	player_phase_menu();
 }
-int search_for_change(){
+void search_for_change(){
 	player -> time--;
 	cout << "You search for change..., but not much turns up." << endl;
 	player -> money++;
 	cout << "You now have " << player -> money << " dolarydoos." << endl;
+	player_phase_menu();
 }
 
-int view_player() {
-	cout << "Hello " << player-> name << endl;
+void view_player() {
 	cout << "You have " << player-> intellegence << " insight" << endl;
 	cout << "You also have " << player -> money << " dollarydoos" << endl;
        	cout << "Time is running short! You only have " << player->time << " nanohours left before the end of the day!" << endl;
+	player_phase_menu();
+}
+
+void player_phase_menu() {
+	char choice;
+	cout << "\nHello " << player-> name << endl;
+	cout << "\nYou have " << player->steps_remaining << " steps between you and the end of the Shelby Center! " << endl;
+	cout<< "What will you do now? " << endl;
+	cout <<"\n1) Move toward the exit!";
+	cout <<"\n2) Search for spare change!";
+	cout <<"\n3) Read technical papers!";
+	cout <<"\n4) View your stats!";
+	cout <<"\n6) Testing command: exit game!";
+	cout <<"\n\nPlease enter one of these numbers to continue. ";
+	player_switch();
+	}
+
+void player_switch() {
+	char choice;
+	cin >> choice;
+	switch (choice){
+	case ('1'):
+	//TODO move
+	choose_encounter();
+	break;
+	case ('2'):
+	search_for_change();
+	break;
+	case ('3'):
+	read_paper();
+	break;
+	case ('4'):
+	view_player();
+	case ('6'):
+	exit(1);
+	default:
+	cout << "\nPlease enter a valid option to continue";
+	player_switch();
+
+}
 }
 
 int main_menu() {
@@ -130,7 +177,7 @@ int main_menu() {
 	case ('1'):
 	//TODO init game
 	init_player();
-	view_player();
+	player_phase_menu();
 	break;
 	case ('2'):
 	//TODO display scores
@@ -144,8 +191,6 @@ int main_menu() {
 	main_menu();
 	}
 	}
-
-
 
 //dummy code for now
 int main() {
