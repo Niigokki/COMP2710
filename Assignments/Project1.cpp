@@ -103,22 +103,23 @@ int main_menu() {
 	cout <<"\n3) Exit to terminal";
 	cout <<"\n\nPlease enter one of these numbers to continue. ";
 	cin >> choice;
-	if (choice == '1') {
+	switch (choice){
+	case ('1'):
 	//TODO init game
 	init_player();
-	}
-	if (choice == ('2') ) {
+	break;
+	case ('2'):
 	//TODO display scores
 	load_scores();
-	}
-	if (choice == ('3')) {
+	break;
+	case ('3'):
 	return 0;
-	}
-	else {
+	break;
+	default:
 	cout << "\nPlease enter a valid option to continue";
 	main_menu();
 	}
-}
+	}
 
 //dummy code for now
 int main() {
