@@ -6,12 +6,14 @@
   * Compiled using g++
   * g++ -o Project1 Project1.cpp
   */
+
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <cstdlib>
 
 using namespace std;
+
 struct Player{
 	int overall_score;
 	int intellegence;
@@ -24,6 +26,7 @@ struct Player{
 
 Player* player;
 string scoreArray[10];
+string nameArray[10];
 bool init_player() {
 	player = new Player();
 	player-> overall_score = 0;
@@ -35,21 +38,18 @@ bool init_player() {
 	cout << "Please input your character's name! ";
 	cin >> player -> name;
 }
+
 int load_scores() {
 	ifstream file("scores.dat");
+	cout << "loading high scores..." << endl;
 	if (file.is_open()) {
-		if (file.fail()){
-			string score_choice;
-			cout << "\nError: high score file does not exist! Would you like to generate a new one? ";
-			cin >> score_choice;
-			if (score_choice == "Yes" || score_choice == "yes" || score_choice == "Y" || score_choice == "y") { //TODO create present scores
-				cout << "Generating scores...\n";
-			}
-				
-		}
 		for (int i = 0; i < 11; ++i) {
 			file >> scoreArray[i];
+			cout << scoreArray[i];
 		}
+	}
+	else {
+	cout << "Error: You seem to be missing the high score table.";
 	}
 }
 
@@ -61,6 +61,7 @@ int save_scores() {
 	}
 	}
 }
+
 int choose_encounter(){
 	int encounter_chance = rand() % 120 + 1;
 	player-> time--;
@@ -79,6 +80,8 @@ int choose_encounter(){
 		cout << "\nYou encounter your 2710 Professor, Dr. Kuu! You gain insight from his knowledge and research";
 		player -> intellegence++;
 		player -> steps_remaining--;
+		cout << "\nYou now have " << player -> intellegence << " insight" << endl;
+		cout << player -> steps_remaining << " steps remain" << endl;
 	}
 	else if (encounter_chance <=100 && encounter_chance >= 75) {
 		cout << "\nIt's time to grade some papers for COMP 2210! Losing time has never been so monontous";
@@ -87,7 +90,7 @@ int choose_encounter(){
 		player -> steps_remaining--;
 	}
 	else if (encounter_chance <=120 && encounter_chance >= 100) {
-		cout << "\nAttacked by the dreaded busy work assignment, you're left with not only less time, but also less intellegence.";
+		cout << "\nAttacked by the dreaded busy work assignment, you're left with not only less time, but also less insight.";
 		player -> intellegence--;
 		player -> steps_remaining--;
 	}
@@ -95,6 +98,26 @@ int choose_encounter(){
 	return 0;
 	
 }
+int read_paper() {
+	player -> time--;
+	cout << "You decided to read some technical papers that Dr. Kuu gave you... You already feel enlightened!"<< endl;
+	player -> intellegence++;
+	cout << "You now have "<< player -> intellegence << " insight" << endl;
+}
+int search_for_change(){
+	player -> time--;
+	cout << "You search for change..., but not much turns up." << endl;
+	player -> money++;
+	cout << "You now have " << player -> money << " dolarydoos." << endl;
+}
+
+int view_player() {
+	cout << "Hello " << player-> name << endl;
+	cout << "You have " << player-> intellegence << " insight" << endl;
+	cout << "You also have " << player -> money << " dollarydoos" << endl;
+       	cout << "Time is running short! You only have " << player->time << " nanohours left before the end of the day!" << endl;
+}
+
 int main_menu() {
 	char choice;
 	cout <<"\nWelcome to Shelby Center and Dragons!";
@@ -107,6 +130,7 @@ int main_menu() {
 	case ('1'):
 	//TODO init game
 	init_player();
+	view_player();
 	break;
 	case ('2'):
 	//TODO display scores
@@ -120,6 +144,8 @@ int main_menu() {
 	main_menu();
 	}
 	}
+
+
 
 //dummy code for now
 int main() {
