@@ -18,6 +18,7 @@ void search_for_change();
 void read_papers();
 void view_player();
 void player_switch();
+int main_menu();
 
 struct Player{
 	int overall_score;
@@ -84,7 +85,7 @@ void choose_encounter(){
 		player -> steps_remaining--;	
 	}
 	else if (encounter_chance <=75 && encounter_chance >= 50) {
-		cout << "\nYou encounter your 2710 Professor, Dr. Kuu! You gain insight from his knowledge and research";
+		cout << "\nYou encounter your 2710 Professor, Dr. Kuu! You gain insight from his knowledge, gained from years of research!";
 		player -> intellegence++;
 		player -> steps_remaining--;
 		cout << "\nYou now have " << player -> intellegence << " insight" << endl;
@@ -104,6 +105,93 @@ void choose_encounter(){
 	player_phase_menu();
 	
 }
+
+void puzzle() {
+	int encounter_chance = rand() % 100 +1;
+	string player_answer;
+	string actual_answer;
+	player -> time--;
+	if (encounter_chance <= 11) {
+		cout <<"What is the better text editor: Emacs or Vim?";
+		cin >> player_answer;
+		if (player_answer == "Vim" || player_answer == "vim" || player_answer == "vi") {
+			cout << "Correct!\n You gain 5 insight and 5 time since you didn't waste any learning silly text editors!" << endl;
+			player-> intellegence += 5;
+			player-> time += 5;
+		}
+	}if (encounter_chance >= 11 && encounter_chance <= 21) {
+		cout <<"What is the better text editor: Emacs or Vim?";
+		cin >> player_answer;
+		if (player_answer == "Vim" || player_answer == "vim" || player_answer == "vi") {
+			cout << "Correct!\n You gain 5 insight and 5 time since you didn't waste any learning silly text editors!" << endl;
+			player-> intellegence += 5;
+			player-> time += 5;
+		}
+	}if (encounter_chance >= 21 && encounter_chance <= 31) {
+		cout <<"What is the better text editor: Emacs or Vim?";
+		cin >> player_answer;
+		if (player_answer == "Vim" || player_answer == "vim" || player_answer == "vi") {
+			cout << "Correct!\n You gain 5 insight and 5 time since you didn't waste any learning silly text editors!" << endl;
+			player-> intellegence += 5;
+			player-> time += 5;
+		}
+		else {
+		cout <<"Incorrect!\n You lose 1 insight and 3 time learning emacs!";
+		player -> intellegence -= 1;
+		player -> time -+ 3;
+		}
+	}if (encounter_chance >= 31 && encounter_chance <= 41) {
+		cout <<"What is the better text editor: Emacs or Vim?";
+		cin >> player_answer;
+		if (player_answer == "Vim" || player_answer == "vim" || player_answer == "vi") {
+			cout << "Correct!\n You gain 5 insight and 5 time since you didn't waste any learning silly text editors!" << endl;
+			player-> intellegence += 5;
+			player-> time += 5;
+		}
+	}if (encounter_chance >= 41 && encounter_chance <= 51) {
+		cout <<"What is the better text editor: Emacs or Vim?";
+		cin >> player_answer;
+		if (player_answer == "Vim" || player_answer == "vim" || player_answer == "vi") {
+			cout << "Correct!\n You gain 5 insight and 5 time since you didn't waste any learning silly text editors!" << endl;
+			player-> intellegence += 5;
+			player-> time += 5;
+		}
+	}if (encounter_chance >= 61 && encounter_chance <= 71) {
+		cout <<"What is the better text editor: Emacs or Vim?";
+		cin >> player_answer;
+		if (player_answer == "Vim" || player_answer == "vim" || player_answer == "vi") {
+			cout << "Correct!\n You gain 5 insight and 5 time since you didn't waste any learning silly text editors!" << endl;
+			player-> intellegence += 5;
+			player-> time += 5;
+		}
+	}if (encounter_chance >= 71 && encounter_chance <= 81) {
+		cout <<"What is the better text editor: Emacs or Vim?";
+		cin >> player_answer;
+		if (player_answer == "Vim" || player_answer == "vim" || player_answer == "vi") {
+			cout << "Correct!\n You gain 5 insight and 5 time since you didn't waste any learning silly text editors!" << endl;
+			player-> intellegence += 5;
+			player-> time += 5;
+		}
+	}if (encounter_chance >= 81 && encounter_chance <= 91) {
+		cout <<"What is the better text editor: Emacs or Vim?";
+		cin >> player_answer;
+		if (player_answer == "Vim" || player_answer == "vim" || player_answer == "vi") {
+			cout << "Correct!\n You gain 5 insight and 5 time since you didn't waste any learning silly text editors!" << endl;
+			player-> intellegence += 5;
+			player-> time += 5;
+		}
+	}if (encounter_chance >= 91 && encounter_chance <= 101) {
+		cout <<"What is the better text editor: Emacs or Vim?";
+		cin >> player_answer;
+		if (player_answer == "Vim" || player_answer == "vim" || player_answer == "vi") {
+			cout << "Correct!\n You gain 5 insight and 5 time since you didn't waste any learning silly text editors!" << endl;
+			player-> intellegence += 5;
+			player-> time += 5;
+		}
+	}
+
+}
+
 void read_paper() {
 	player -> time--;
 	cout << "You decided to read some technical papers that Dr. Kuu gave you... You already feel enlightened!"<< endl;
@@ -128,6 +216,25 @@ void view_player() {
 
 void player_phase_menu() {
 	char choice;
+	if (player -> intellegence <= 0) {
+		player -> is_alive = false;
+		cout << "You have run out of insight " << player->name <<", I guess grad school isn't for everyone." << endl;
+		cout << "GAME OVER" << endl;
+		main_menu();
+	}
+	if (player -> money <=0) {
+		player -> is_alive = false;
+		cout << "You have run out of money " << player->name << ", I hope you don't mind moving back in with your parents" << endl;
+		cout << "GAME OVER" << endl;
+		main_menu();
+	}
+	if (player -> time <=0) {
+		player -> is_alive = false;
+		cout << "Deadlines got you down, " << player->name<< "?  Hope you don't mind being out of time!" << endl;
+		cout << "GAME OVER" << endl;
+		main_menu();
+	}
+	else {
 	cout << "\nHello " << player-> name << endl;
 	cout << "\nYou have " << player->steps_remaining << " steps between you and the end of the Shelby Center! " << endl;
 	cout<< "What will you do now? " << endl;
@@ -138,6 +245,7 @@ void player_phase_menu() {
 	cout <<"\n6) Testing command: exit game!";
 	cout <<"\n\nPlease enter one of these numbers to continue. ";
 	player_switch();
+	}
 	}
 
 void player_switch() {
@@ -184,7 +292,7 @@ int main_menu() {
 	load_scores();
 	break;
 	case ('3'):
-	return 0;
+	exit(1);
 	break;
 	default:
 	cout << "\nPlease enter a valid option to continue";
