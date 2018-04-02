@@ -109,7 +109,6 @@ void choose_encounter(){
 void puzzle() {
 	int encounter_chance = rand() % 100 +1;
 	string player_answer;
-	string actual_answer;
 	player -> time--;
 	if (encounter_chance <= 11) {
 		cout <<"What is the better text editor: Emacs or Vim?";
@@ -138,7 +137,7 @@ void puzzle() {
 		else {
 		cout <<"Incorrect!\n You lose 1 insight and 3 time learning emacs!";
 		player -> intellegence -= 1;
-		player -> time -+ 3;
+		player -> time -= 3;
 		}
 	}if (encounter_chance >= 31 && encounter_chance <= 41) {
 		cout <<"What is the better text editor: Emacs or Vim?";
