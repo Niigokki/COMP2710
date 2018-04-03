@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/minakaine/Programming/COMP 2710/COMP2710/Assignments/hw1.cpp" "/home/minakaine/Programming/COMP 2710/COMP2710/Assignments/cmake-build-debug/CMakeFiles/Assignments.dir/hw1.cpp.o"
+  "/home/morgankaine/Prog/COMP2710/Assignments/hw1.cpp" "/home/morgankaine/Prog/COMP2710/Assignments/cmake-build-debug/CMakeFiles/Assignments.dir/hw1.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

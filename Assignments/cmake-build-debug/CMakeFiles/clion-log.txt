@@ -1,6 +1,6 @@
-/home/minakaine/Programming/clion-2017.3.2/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/home/minakaine/Programming/COMP 2710/COMP2710/Assignments"
--- The C compiler identification is GNU 7.2.1
--- The CXX compiler identification is GNU 7.2.1
+/home/morgankaine/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/181.4203.549/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/morgankaine/Prog/COMP2710/Assignments
+-- The C compiler identification is GNU 5.4.0
+-- The CXX compiler identification is GNU 5.4.0
 -- Check for working C compiler: /usr/bin/cc
 -- Check for working C compiler: /usr/bin/cc -- works
 -- Detecting C compiler ABI info
@@ -15,4 +15,4 @@
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/minakaine/Programming/COMP 2710/COMP2710/Assignments/cmake-build-debug
+-- Build files have been written to: /home/morgankaine/Prog/COMP2710/Assignments/cmake-build-debug

@@ -1,3 +1,3 @@
-/home/minakaine/Programming/COMP 2710/COMP2710/Assignments/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/minakaine/Programming/COMP 2710/COMP2710/Assignments/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/minakaine/Programming/COMP 2710/COMP2710/Assignments/cmake-build-debug/CMakeFiles/Assignments.dir
+/home/morgankaine/Prog/COMP2710/Assignments/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/morgankaine/Prog/COMP2710/Assignments/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/morgankaine/Prog/COMP2710/Assignments/cmake-build-debug/CMakeFiles/Assignments.dir

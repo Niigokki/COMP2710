@@ -107,7 +107,7 @@ void choose_encounter(){
 }
 
 void puzzle() {
-	int encounter_chance = rand() % 100 +1;
+	int encounter_chance = rand() % 10;
 	string player_answer;
 	player -> time--;
 	if (encounter_chance <= 11) {
@@ -188,6 +188,11 @@ void puzzle() {
 			player-> time += 5;
 		}
 	}
+	else {
+		cout << "ERR" << endl;
+	}
+
+
 
 }
 
